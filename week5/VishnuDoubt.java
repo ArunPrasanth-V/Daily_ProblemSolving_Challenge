@@ -24,7 +24,7 @@ class MyClass {
       
       for(int i=orgn+1;i<=t;i++)
       {
-          if((i<=temp*10) && i<t)
+          if((i<=temp*10) && i<=t)
           {
               System.out.print(i+" ");
           }
