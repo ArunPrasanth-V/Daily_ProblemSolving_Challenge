@@ -7,7 +7,7 @@
 * * * * * 
 
 */
-public class Pattern1 {
+class Pattern1 {
 	public static void main(String args[])
 	{
 	   	fun(5,0);
