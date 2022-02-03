@@ -1,0 +1,14 @@
+-- # problem no : 181 
+-- # link : https://leetcode.com/problems/employees-earning-more-than-their-managers/
+
+
+-- # Solution 1
+SELECT a.name AS Employee from Employee AS a
+ where a.salary > (select salary from Employee where id=a.manager);
+
+-- # Solution 2
+SELECT a.name AS Employee from Employee AS a
+JOIN Employee AS b ON b.id=a.managerId
+where a.salary >b.salary;
+
+
