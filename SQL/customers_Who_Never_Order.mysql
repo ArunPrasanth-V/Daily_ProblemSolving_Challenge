@@ -1,0 +1,6 @@
+-- problem no: 183
+--link : https://leetcode.com/problems/customers-who-never-order/
+
+SELECT name as Customers FROM Customers as c  
+left JOIN Orders as o on c.id=o.customerId
+where o.id is null;
