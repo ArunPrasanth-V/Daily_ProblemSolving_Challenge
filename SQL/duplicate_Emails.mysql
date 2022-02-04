@@ -1,6 +1,12 @@
 -- problem no: 182 
 -- link : https://leetcode.com/problems/duplicate-emails/
 
+-- Problem 1
+SELECT  email as Email FROM Person 
+GROUP BY email
+HAVING count(email)>1;
+
+-- Problem 2
 SELECT DISTINCT p.email as Email FROM Person AS p
 JOIN Person AS q ON p.email=q.email
 AND p.id !=q.id ;
