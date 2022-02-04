@@ -1,0 +1,6 @@
+-- problem no: 182 
+-- link : https://leetcode.com/problems/duplicate-emails/
+
+SELECT DISTINCT p.email as Email FROM Person AS p
+JOIN Person AS q ON p.email=q.email
+AND p.id !=q.id ;
