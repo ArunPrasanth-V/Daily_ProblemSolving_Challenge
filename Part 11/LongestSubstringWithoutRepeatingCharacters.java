@@ -17,6 +17,7 @@ class Solution {
 				arr.add(c);
 				count++;
 			}
+
 			if(count>max)
 				max=count;
 		}
