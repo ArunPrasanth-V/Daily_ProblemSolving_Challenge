@@ -1,11 +1,16 @@
 function find(arr) {
     let max=-Infinity;
     let max2=max;
+    let temp=0;
     for(let i of arr)
         {
-            if(max<i)
+            if(max<i){
+              temp=max;  
                 max=i;
-            if(i>max2 && i!=max)
+                i=temp;
+            }
+                
+             if(i>max2 && i!=max)
                 max2=i;
         }
     return max2;
