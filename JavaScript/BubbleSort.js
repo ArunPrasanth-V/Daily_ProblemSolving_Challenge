@@ -6,7 +6,6 @@ function sort(arr)
         let isSwap=true;
         for(let j=1;j<arr.length-i;j++)
         {
-
             if(arr[a]>arr[j])
             {
                 let temp=arr[a];
@@ -21,6 +20,4 @@ function sort(arr)
     }
     return arr;
 }
-
-
 console.log(sort([8,5,1,4,3,2,10,7]));
