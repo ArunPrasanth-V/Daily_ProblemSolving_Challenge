@@ -9,7 +9,7 @@ class Solution {
             int mid=(left+right)/2;
             if(arr[mid]==target)
                 return mid;
-            else if(arr[mid]>=arr[left])
+            if(arr[mid]>=arr[left])
             {
                 if(target<=arr[mid] && target>=arr[left] )
                     right=mid-1;
