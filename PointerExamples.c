@@ -1,5 +1,5 @@
 #include<stdio.h>
-int main()
+void main()
 {
     int x=5;
     int*p=&x;
@@ -18,5 +18,4 @@ int main()
     printf("*r = %d\n",*r);
     printf("**r = %d\n",**r);
     printf("***r = %d\n",*(*(*r)));
- return 0;
 }
