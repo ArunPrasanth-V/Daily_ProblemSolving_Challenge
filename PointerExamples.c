@@ -18,4 +18,6 @@ void main()
     printf("*r = %d\n",*r);
     printf("**r = %d\n",**r);
     printf("***r = %d\n",*(*(*r)));
+    
+    
 }
