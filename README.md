@@ -1,1 +1,1 @@
-# Daily_ProblemSolving_Challenge
+# Daily Problem Solving Challenge
