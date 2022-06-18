@@ -2,7 +2,7 @@
 public class TeluskoPattern {
 
 	public static void main(String[] args) {
-	 String name="TELUSCO";
+	 String name="TELUSkO";
 	 printPattern(name,name.length());
 	}
 	
@@ -15,22 +15,41 @@ public class TeluskoPattern {
 	// o = i=0,i=height-1,j=0,j=width-1
 	private static void printPattern(String name,int len) {
 	    len *=name.length();
-	    int pointer=7;
-		for(int i=0;i<7;i++) {
-			for(int j=0;j<len;j++) {
-				if(j==pointer && i==0) {
-					pointer+=7;
+	    int ll=7;//letter length
+	    int pointer=ll;// width of each letter.
+	    int wp=1;//word pointer
+	    int h=7;//height
+	    int w=len;//width
+		for(int i=0;i<h;i++) {
+			 pointer=ll;
+			 wp=1;
+			 
+			for(int j=0;j<w;j++) {
+				if(j==(pointer)) {
+					wp++;
+					pointer+=ll;
 					System.out.print("  ");
+					continue;
 				}
-				else if(((i==0 || j==3) &&(j<14||j>21)&& (j!=pointer && i==0)) || (j==3)|| (j==8)||((j>8 &&j<14) &&(i==3||i==6))) {
+				//first row  
+				if(i==0 &&((j<ll*2 || j> ll*4))) {
 					System.out.print("* ");
 				}
-				else if(j==15 || (j>14&&j<21 &&i==6))//printing l 
+				//middle row
+				else if( (wp==1 &&j==ll/2)                     ||// for T
+					     (wp==2 && (j==1+(ll) || (i==ll/2)))   ||// for E
+					     (wp==3 && (j==1+(ll*(wp-1))))         ||// for l
+					     (wp==4&& ((j==1+(ll*(wp-1)))|| (j==6+(ll*(wp-1))))   )||//for u
+				         (wp==5&& ((i==ll/2)||(i<h/2 && j==1+(ll*(wp-1))||(i>h/2 && (j==6+(ll*(wp-1)))   )))  ) ||//for s
+				         (wp==6&& j==1+(ll*(wp-1)))            ||//for c
+				         (wp==7&& j==1+(ll*(wp-1)) || j==w-1)    //for o
+					 )
 				{
+		        
 					System.out.print("* ");
 				}
-				else if(j==28)//printing s 
-				{
+				// last row
+				else if(i==h-1 && (j==ll/2 || j>ll)) {
 					System.out.print("* ");
 				}
 				else {
