@@ -2,10 +2,10 @@
 public class TeluskoPattern {
 
 	public static void main(String[] args) {
-	 String name="TELUSkO";
-	 printPattern(name,name.length());
+		String name = "TELUSkO";
+		printPattern(name, name.length());
 	}
-	
+
 	// t = i=0,j=height/2
 	// e = i=0,i=height/2 , i=height-1 , j=0
 	// l = i=height-1,j=0
@@ -13,51 +13,72 @@ public class TeluskoPattern {
 	// s = i=0,(i<height/2 && j=0),i=height-1 ,j=height/2 , j=width-1
 	// c = i=0,j=0,i=height-1
 	// o = i=0,i=height-1,j=0,j=width-1
-	private static void printPattern(String name,int len) {
-	    len *=name.length();
-	    int ll=7;//letter length
-	    int pointer=ll;// width of each letter.
-	    int wp=1;//word pointer
-	    int h=7;//height
-	    int w=len;//width
-		for(int i=0;i<h;i++) {
-			 pointer=ll;
-			 wp=1;
-			 
-			for(int j=0;j<w;j++) {
-				if(j==(pointer)) {
-					wp++;
-					pointer+=ll;
+	private static void printPattern(String name, int len) {
+		int ll = 7;// letter length
+		int pointer = ll;// width of each letter.
+		int letterCount = 1;// word pointer
+		int LetterWidth = 6;
+		int totalHeight = 7;// height
+		int totalWidth = len * len;// width
+		int kPointer = LetterWidth - 1;
+		for (int i = 0; i < totalHeight; i++) {
+			pointer = ll;
+			letterCount = 1;
+			int startingIndex = 0;// letter startingIndex
+			int endingIndex = len - 1;// letter endingIndex
+
+			for (int j = 0; j < totalWidth; j++) {
+
+				if (j == (pointer))// true: pointer is in end of particular letter
+				{
+					letterCount++; // increment the word count
+					pointer += ll; // increment the pointer count.so it refer next letter
+					startingIndex = j + 1;
+					endingIndex = startingIndex + LetterWidth - 1;
 					System.out.print("  ");
 					continue;
 				}
-				//first row  
-				if(i==0 &&((j<ll*2 || j> ll*4))) {
+				// first row
+				if (i == 0 && (letterCount != 3 && letterCount != 4 && letterCount != 6)) {
 					System.out.print("* ");
 				}
-				//middle row
-				else if( (wp==1 &&j==ll/2)                     ||// for T
-					     (wp==2 && (j==1+(ll) || (i==ll/2)))   ||// for E
-					     (wp==3 && (j==1+(ll*(wp-1))))         ||// for l
-					     (wp==4&& ((j==1+(ll*(wp-1)))|| (j==6+(ll*(wp-1))))   )||//for u
-				         (wp==5&& ((i==ll/2)||(i<h/2 && j==1+(ll*(wp-1))||(i>h/2 && (j==6+(ll*(wp-1)))   )))  ) ||//for s
-				         (wp==6&& j==1+(ll*(wp-1)))            ||//for c
-				         (wp==7&& j==1+(ll*(wp-1)) || j==w-1)    //for o
-					 )
-				{
-		        
+				// middle row
+
+				else if ((letterCount == 1 && j == endingIndex / 2)                          || // for T
+						(letterCount == 2 && (j == startingIndex || (i == totalHeight / 2))) || // for E
+						(letterCount == 3 && j == startingIndex)                             || // for l
+						(letterCount == 4 && (j == startingIndex || j == endingIndex))       || // for u
+						(letterCount == 5 && (((j == startingIndex && i < totalHeight / 2)
+								|| (j == endingIndex && i > totalHeight / 2)) || i == totalHeight / 2))   || // for s
+						(letterCount == 6 && (j == startingIndex || (j == startingIndex + kPointer - 1))) || // for K
+						(letterCount == 7 && (j == startingIndex || j == endingIndex))                       // for o
+				) {
+
 					System.out.print("* ");
 				}
 				// last row
-				else if(i==h-1 && (j==ll/2 || j>ll)) {
+				else if (i == totalHeight - 1 && (j == ll / 2 || j > ll) && letterCount != 6) {
 					System.out.print("* ");
-				}
-				else {
+				} else {
 					System.out.print("  ");
 				}
 			}
+
+			kPointer = i < totalHeight / 2 ? kPointer - 1 : kPointer + 1;
+			// kPointer--;
 			System.out.println();
 		}
 	}
 
 }
+
+/*
+sample output: 
+* * * * * * *   * * * * * *   *             *         *   * * * * * *   *       *     * * * * * * 
+      *         *             *             *         *   *             *     *       *         * 
+      *         *             *             *         *   *             *   *         *         * 
+      *         * * * * * *   *             *         *   * * * * * *   * *           *         * 
+      *         *             *             *         *             *   *   *         *         * 
+      *         *             *             *         *             *   *     *       *         * 
+      *         * * * * * *   * * * * * *   * * * * * *   * * * * * *   *       *     * * * * * * 
+ */
