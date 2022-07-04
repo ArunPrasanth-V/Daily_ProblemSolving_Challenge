@@ -19,17 +19,15 @@ public class CaptureEmpire {
 			        for(int i=0;i<A.length;i++){
 			            int troop=++x;
 			            day++;
-			            if(Teamcontains(troop,map)!=0) {	
-		                }
-		                else 
+			        if(!Teamcontains(troop,map)) 
 		                {
 				             while(A[i]>troop){
 				            	 day++;
 					             troop+=x;
-					                if(Teamcontains(troop,map)!=0) {              	
+					                if(Teamcontains(troop,map)) {              	
 					                	break;
 					                }
-					                else if(checkBetweenRange(troop-x,troop,map)!=0) {
+					                else if(checkBetweenRange(troop-x,troop,map)) {
 					                	break;
 					                }
 					                
@@ -43,9 +41,9 @@ public class CaptureEmpire {
 		  int c=map.getOrDefault(val,0);
 		  if(c!=0) {
 			  map.put(val,--c);
-			  return c+1;
+			  return true;
 		  }
-		  return 0;
+		  return false;
 	  }
 	  public static int checkBetweenRange(int start,int end ,Map<Integer,Integer>map) {
 		  for(int i=start;i<end;i++) {
@@ -53,10 +51,10 @@ public class CaptureEmpire {
 			if(c!=0)
 			{
 				map.put(i,--c);
-				return c+1;
+				return true;
 			}
 				
 		  }
-		  return 0;
+		  return false;
 	  }
 }
