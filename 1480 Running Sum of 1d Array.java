@@ -6,7 +6,6 @@ class Solution {
         for(int i=0;i<nums.length;i++){
             sum+=nums[i]; 
             nums[i]=sum; 
-            
         } 
         return nums;
     }
